@@ -26,13 +26,13 @@ jobs:
         run: npm ci
 
       - name: Build Vite project
-        run: npm run build
+        run: npm run build:react-app
 
       - name: Install wrangler
         run: npm install -g wrangler
 
       - name: Deploy to Cloudflare Pages
         run: |
-          npx wrangler pages deploy dist \
+          npx wrangler pages deploy packages/react-app/dist \
             --project-name=ctl-draft \
             --branch=${{ github.ref_name }}
