@@ -21,7 +21,7 @@ const GlobalStyle = createGlobalStyle<{ theme: ITheme }>`
     font-size: 16px;
   }
 
-  h1, h2, h3, h4, h5, h6, p {
+  h1, h2, h3, h4, h5, h6, p, input, textarea {
     color: ${({ theme }) => theme.palette.primary};
     font-family: 'ShortStack', sans-serif;
     letter-spacing: normal;
@@ -57,16 +57,17 @@ const GlobalStyle = createGlobalStyle<{ theme: ITheme }>`
     }
   }
 
-  input {
-    border-radius: 0;
-  }
-
-  input:focus {
+  input:focus, textarea:focus {
     outline: none;
   }
 
-  textarea:focus {
-    outline: none;
+  input[type='number'] {
+    -moz-appearance:textfield;
+  }
+
+  input::-webkit-outer-spin-button,
+  input::-webkit-inner-spin-button {
+    -webkit-appearance: none;
   }
 `
 

@@ -1,4 +1,4 @@
-# Getting Started with React Starter
+# Getting Started with CTL Draft
 
 This project uses React, Typescript, Vite, Biome, Styled Components.
 

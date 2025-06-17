@@ -8,7 +8,7 @@ export interface ITheme {
 
 export const theme: ITheme = {
   palette: {
-    primary: '#ffffff',
+    primary: '#aaaaaa',
     secondary: '#000000',
     error: '#ff0000',
   },

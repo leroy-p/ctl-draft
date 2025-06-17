@@ -12,6 +12,7 @@ export default function Header() {
 
 const Container = styled.header`
   align-items: center;
+  border-bottom: ${({ theme }) => `solid 1px ${theme.palette.primary}`};
   display: flex;
   flex-direction: row;
   height: 48px;

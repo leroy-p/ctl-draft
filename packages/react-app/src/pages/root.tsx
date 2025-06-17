@@ -1,18 +1,49 @@
 import styled from 'styled-components'
 
-import { useI18n } from '../hooks/use-i18n'
 import Layout from '../layout'
-import logo from '../assets/images/logo512.png'
+import DraftSettings from '../components/draft-settings'
+import { useDraft } from '../hooks/use-draft'
+import SelectedGames from '../components/selected-games'
+import FinalSelectedGame from '../components/final-selected-game'
 
 export default function Root() {
-  const { t } = useI18n()
+  const {
+    gameList,
+    poolSize,
+    banCount,
+    games,
+    selectedGames,
+    bansRemaining,
+    finalSelectedGame,
+    setGameList,
+    setPoolSize,
+    setBanCount,
+    pickRandomGames,
+    banGame,
+  } = useDraft()
 
   return (
     <Layout>
       <Container>
-        <h6>{t('root.title')}</h6>
-        <p>{t('root.message')}</p>
-        <img alt="" src={logo} />
+        {poolSize !== -1 && banCount !== -1 && (
+          <>
+            <DraftSettings
+              actionDisabled={games.length < poolSize || banCount >= poolSize}
+              banCount={banCount}
+              draftCompleted={selectedGames.length > 0}
+              gameList={gameList}
+              pickRandomGames={pickRandomGames}
+              poolSize={poolSize}
+              setBanCount={setBanCount}
+              setGameList={setGameList}
+              setPoolSize={setPoolSize}
+            />
+            {selectedGames.length > 0 && (
+              <SelectedGames bansCompleted={bansRemaining === 0} banGame={banGame} games={selectedGames} />
+            )}
+            {finalSelectedGame && <FinalSelectedGame game={finalSelectedGame} />}
+          </>
+        )}
       </Container>
     </Layout>
   )
@@ -21,21 +52,8 @@ export default function Root() {
 const Container = styled.div`
   align-items: center;
   display: flex;
-  flex-direction: column;
-  gap: 16px;
-  justify-content: center;
+  flex-direction: row;
+  height: 100%;
+  justify-content: flex-start;
   width: 100%;
-
-  & > h6 {
-    font-size: 48px;
-  }
-
-  & > p {
-    font-size: 24px;
-  }
-
-  & > img {
-    height: 72px;
-    width: auto;
-  }
 `
