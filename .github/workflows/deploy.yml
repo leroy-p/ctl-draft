@@ -3,7 +3,7 @@ name: Deploy ctl-draft to Cloudflare Pages
 on:
   push:
     branches:
-      - main # modifie ici si tu travailles sur une autre branche (ex: env/dev)
+      - master
 
 jobs:
   deploy:
