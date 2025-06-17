@@ -12,7 +12,7 @@ export function useDraft() {
 
   useEffect(() => {
     async function getJsonData() {
-      const response = await fetch('/draft-default-settings.json')
+      const response = await fetch('https://curvz.gg/draft-default-settings.json')
 
       if (!response.ok) {
         throw new Error(`HTTP Error ${response.status}`)

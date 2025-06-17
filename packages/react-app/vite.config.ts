@@ -8,6 +8,7 @@ export default ({ mode }: ConfigEnv) => {
 
   return defineConfig({
     root: path.resolve(__dirname),
+    base: "/",
     build: {
       outDir: 'dist',
       emptyOutDir: true
