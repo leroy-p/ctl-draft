@@ -32,8 +32,10 @@ jobs:
       - name: Install wrangler
         run: npm install -g wrangler
 
-      - name: Deploy to Cloudflare Pages
+      - name: Deploy Cloudflare Page
+        working-directory: packages/react-app
         run: |
-          npx wrangler pages deploy packages/react-app/dist \
-            --project-name=ctl-draft \
-            --branch=${{ github.ref_name }}
+          if ! npx wrangler pages project list | grep -qw "ctl-draft"; then
+            npx wrangler pages project create ctl-draft --production-branch=${{ github.ref_name }}
+          fi
+            npx wrangler pages deploy dist --project-name=ctl-draft --branch=${{ github.ref_name }}
