@@ -12,6 +12,7 @@ interface IProps {
 export default function SelectedGames({ bansCompleted, games, banGame }: IProps) {
   return (
     <Container>
+      <p>Choisis des jeux à bannir</p>
       {games.map((game, index) => (
         <GameRow banned={game.banned} key={index}>
           <p>{game.name}</p>
@@ -33,9 +34,14 @@ const Container = styled.div`
   flex-direction: column;
   gap: 24px;
   height: 100%;
-  justify-content: center;
-  padding: 24px;
+  justify-content: flex-start;
+  padding: 80px 24px;
   width: calc(100% / 3);
+
+  & > p {
+    font-size: 28px;
+    margin-bottom: 16px;
+  }
 `
 
 const GameRow = styled.div<{ banned: boolean }>`

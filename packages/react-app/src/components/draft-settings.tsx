@@ -50,8 +50,8 @@ const Container = styled.div<{ draftCompleted?: boolean }>`
   display: flex;
   flex-direction: column;
   height: 100%;
-  justify-content: center;
-  padding: 24px;
+  justify-content: flex-start;
+  padding: 80px 24px;
   width: calc(100% / 3);
 
   & > p {
