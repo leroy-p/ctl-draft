@@ -13,24 +13,6 @@ export function useDraft() {
   const [finalSelectedGame, setFinalSelectedGame] = useState<string | undefined>(undefined)
 
   useEffect(() => {
-    async function getJsonData() {
-      const response = await fetch('/draft-default-settings.json')
-
-      if (!response.ok) {
-        throw new Error(`HTTP Error ${response.status}`)
-      }
-
-      const data = await response.json()
-
-      setGameList(data.defaultGameList)
-      setPoolSize(data.defaultPoolSize)
-      setBanCount(data.defaultBanCount)
-    }
-
-    getJsonData()
-  }, [])
-
-  useEffect(() => {
     setGames(parseGames(gameList))
   }, [gameList])
 
