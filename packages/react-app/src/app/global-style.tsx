@@ -1,12 +1,12 @@
 import { createGlobalStyle } from 'styled-components'
 
 import { ITheme } from './theme'
-import shortStack from '../assets/fonts/ShortStack-Regular.ttf'
+import jura from '../assets/fonts/Jura-VariableFont_wght.ttf'
 
 const GlobalStyle = createGlobalStyle<{ theme: ITheme }>`
   @font-face {
-    font-family: "ShortStack";
-    src: url("${shortStack}");
+    font-family: "Jura";
+    src: url("${jura}");
     font-style: normal;
   }
 
@@ -17,13 +17,14 @@ const GlobalStyle = createGlobalStyle<{ theme: ITheme }>`
   }
 
   body {
-    font-family: 'ShortStack', sans-serif;
+    background: linear-gradient(180deg, #252426 0%, #181819 100%);
+    font-family: 'Jura', sans-serif;
     font-size: 16px;
   }
 
   h1, h2, h3, h4, h5, h6, p, input, textarea {
     color: ${({ theme }) => theme.palette.primary};
-    font-family: 'ShortStack', sans-serif;
+    font-family: 'Jura', sans-serif;
     letter-spacing: normal;
     line-height: normal;
     margin: 0;
@@ -35,7 +36,7 @@ const GlobalStyle = createGlobalStyle<{ theme: ITheme }>`
 
   a {
     cursor: pointer;
-    font-family: 'ShortStack', sans-serif;
+    font-family: 'Jura', sans-serif;
     text-decoration: none;
 
     &:hover {
@@ -48,7 +49,7 @@ const GlobalStyle = createGlobalStyle<{ theme: ITheme }>`
     border: none;
     color: ${({ theme }) => theme.palette.primary};
     cursor: pointer;
-    font-family: 'ShortStack', sans-serif;
+    font-family: 'Jura', sans-serif;
     outline:none;
     padding: 0;
 

@@ -2,31 +2,33 @@ import React from 'react'
 import styled from 'styled-components'
 
 interface IProps {
-  children: React.ReactNode
+  icon: string
   disabled?: boolean
   onClick?: () => void
 }
 
-export default function Button({ children, disabled, onClick }: IProps) {
+export default function IconButton({ icon, disabled, onClick }: IProps) {
   return (
     <Container disabled={disabled} onClick={onClick}>
-      {children}
+      <img alt="" src={icon} />
     </Container>
   )
 }
 
 const Container = styled.button<{ disabled?: boolean }>`
   align-items: center;
-  background-color: ${({ theme }) => theme.palette.green};
-  border-radius: 20px;
-  color: ${({ theme }) => theme.palette.secondary};
+  background-color: ${({ theme }) => theme.palette.red};
+  border-radius: 16px;
   display: flex;
   flex-direction: row;
-  font-size: 28px;
-  font-weight: 700;
   justify-content: center;
   opacity: ${({ disabled }) => (disabled ? '0.3' : '1')};
-  padding: 12px 16px 16px 16px;
+  padding: 8px 16px;
   pointer-events: ${({ disabled }) => (disabled ? 'none' : 'auto')};
   text-align: center;
+
+  & > img {
+    height: 24px;
+    width: 24px;
+  }
 `

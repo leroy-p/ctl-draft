@@ -22,7 +22,6 @@ export default function Layout({ children }: IProps) {
 
 const Container = styled(Div100vh)`
   align-items: center;
-  background-color: ${({ theme }) => theme.palette.secondary};
   display: flex;
   flex-direction: column;
   justify-content: center;

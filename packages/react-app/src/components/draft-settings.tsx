@@ -27,18 +27,18 @@ export default function DraftSettings({
 }: IProps) {
   return (
     <Container draftCompleted={draftCompleted}>
-      <p>Games list</p>
+      <p>Liste des jeux</p>
       <textarea onChange={(event) => setGameList(event.target.value)} value={gameList} />
       <div className="row-container">
-        <p>Pool size</p>
+        <p>Nombre de jeux tirés</p>
         <input type="number" onChange={(event) => setPoolSize(Number.parseInt(event.target.value))} value={poolSize} />
       </div>
       <div className="row-container">
-        <p>Ban count</p>
+        <p>Nombre de jeux bannis</p>
         <input type="number" onChange={(event) => setBanCount(Number.parseInt(event.target.value))} value={banCount} />
       </div>
       <Button disabled={actionDisabled || draftCompleted} onClick={pickRandomGames}>
-        Start draft
+        Commencer
       </Button>
     </Container>
   )
@@ -46,7 +46,7 @@ export default function DraftSettings({
 
 const Container = styled.div<{ draftCompleted?: boolean }>`
   align-items: center;
-  border-right: ${({ theme }) => `solid 1px ${theme.palette.primary}`};
+  border-right: ${({ theme }) => `solid 1px ${theme.palette.border}`};
   display: flex;
   flex-direction: column;
   height: 100%;
@@ -55,15 +55,17 @@ const Container = styled.div<{ draftCompleted?: boolean }>`
   width: calc(100% / 3);
 
   & > p {
-    font-size: 18px;
-    margin-bottom: 8px;
-    width: 100%;
+    font-size: 28px;
+    margin-bottom: 16px;
   }
 
   & > textarea {
     background-color: ${({ theme }) => theme.palette.secondary};
-    border: ${({ theme }) => `solid 1px ${theme.palette.primary}`};
-    height: 274px;
+    border: none;
+    border-radius: 20px;
+    box-shadow: 0px 0px 31.1px 0px rgba(0, 0, 0, 0.54) inset;
+    height: 272px;
+    flex-shrink: 0;
     font-size: 18px;
     line-height: 24px;
     opacity: ${({ draftCompleted }) => (draftCompleted ? '0.5' : '1')};
@@ -75,25 +77,32 @@ const Container = styled.div<{ draftCompleted?: boolean }>`
 
   .row-container {
     align-items: center;
+    border: ${({ theme }) => `solid 1px ${theme.palette.green}`};
+    border-radius: 20px;
     display: flex;
     flex-direction: row;
     justify-content: space-between;
     margin-top: 32px;
+    padding: 16px 20px;
     width: 100%;
 
     & > p {
-      font-size: 18px;
+      font-size: 20px;
+      font-weight: 700;
     }
 
     & > input {
       background-color: ${({ theme }) => theme.palette.secondary};
-      border: ${({ theme }) => `solid 1px ${theme.palette.primary}`};
-      font-size: 18px;
-      height: 32px;
+      border: none;
+      border-radius: 20px;
+      box-shadow: 0px 0px 31.1px 0px rgba(0, 0, 0, 0.54) inset;
+      font-size: 28px;
+      font-weight: 700;
+      height: 56px;
       opacity: ${({ draftCompleted }) => (draftCompleted ? '0.5' : '1')};
       pointer-events: ${({ draftCompleted }) => (draftCompleted ? 'none' : 'auto')};
       text-align: center;
-      width: 48px;
+      width: 76px;
     }
   }
 

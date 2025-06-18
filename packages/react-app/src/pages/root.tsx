@@ -25,25 +25,21 @@ export default function Root() {
   return (
     <Layout>
       <Container>
-        {poolSize !== -1 && banCount !== -1 && (
-          <>
-            <DraftSettings
-              actionDisabled={games.length < poolSize || banCount >= poolSize}
-              banCount={banCount}
-              draftCompleted={selectedGames.length > 0}
-              gameList={gameList}
-              pickRandomGames={pickRandomGames}
-              poolSize={poolSize}
-              setBanCount={setBanCount}
-              setGameList={setGameList}
-              setPoolSize={setPoolSize}
-            />
-            {selectedGames.length > 0 && (
-              <SelectedGames bansCompleted={bansRemaining === 0} banGame={banGame} games={selectedGames} />
-            )}
-            {finalSelectedGame && <FinalSelectedGame game={finalSelectedGame} />}
-          </>
+        <DraftSettings
+          actionDisabled={games.length < poolSize || banCount >= poolSize}
+          banCount={banCount}
+          draftCompleted={selectedGames.length > 0}
+          gameList={gameList}
+          pickRandomGames={pickRandomGames}
+          poolSize={poolSize}
+          setBanCount={setBanCount}
+          setGameList={setGameList}
+          setPoolSize={setPoolSize}
+        />
+        {selectedGames.length > 0 && (
+          <SelectedGames bansCompleted={bansRemaining === 0} banGame={banGame} games={selectedGames} />
         )}
+        {finalSelectedGame && <FinalSelectedGame game={finalSelectedGame} />}
       </Container>
     </Layout>
   )

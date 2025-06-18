@@ -12,7 +12,7 @@ export default function FinalSelectedGame({ game }: IProps) {
   return (
     <Container>
       <p>{game}</p>
-      <Button onClick={() => navigate(0)}>Restart draft</Button>
+      <Button onClick={() => navigate(0)}>Recommencer</Button>
     </Container>
   )
 }
@@ -27,5 +27,6 @@ const Container = styled.div`
 
   & > p {
     font-size: 48px;
+    font-weight: 700;
   }
 `

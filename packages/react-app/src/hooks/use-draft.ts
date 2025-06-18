@@ -1,13 +1,15 @@
 import { useEffect, useState } from 'react'
 import { getRandomInt } from '../utils/number'
 
+import jsonData from '../data/draft-default-settings.json'
+
 export function useDraft() {
-  const [gameList, setGameList] = useState<string>('')
-  const [poolSize, setPoolSize] = useState<number>(-1)
-  const [banCount, setBanCount] = useState<number>(-1)
+  const [gameList, setGameList] = useState<string>(jsonData.defaultGameList)
+  const [poolSize, setPoolSize] = useState<number>(jsonData.defaultPoolSize)
+  const [banCount, setBanCount] = useState<number>(jsonData.defaultBanCount)
   const [games, setGames] = useState<string[]>([])
   const [selectedGames, setSelectedGames] = useState<Array<{ name: string; banned: boolean }>>([])
-  const [bansRemaining, setBansRemaining] = useState<number>(-1)
+  const [bansRemaining, setBansRemaining] = useState<number>(jsonData.defaultBanCount)
   const [finalSelectedGame, setFinalSelectedGame] = useState<string | undefined>(undefined)
 
   useEffect(() => {

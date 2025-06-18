@@ -1,6 +1,7 @@
 import styled from 'styled-components'
 
-import Button from './button'
+import IconButton from './icon-button'
+import banIcon from '../assets/images/icon-ban.png'
 
 interface IProps {
   bansCompleted: boolean
@@ -12,12 +13,14 @@ export default function SelectedGames({ bansCompleted, games, banGame }: IProps)
   return (
     <Container>
       {games.map((game, index) => (
-        <div className="game-row-container" key={index}>
-          <p className={game.banned ? 'banned' : ''}>{game.name}</p>
-          <Button disabled={game.banned || bansCompleted} onClick={() => banGame(index)}>
-            X
-          </Button>
-        </div>
+        <GameRow banned={game.banned} key={index}>
+          <p>{game.name}</p>
+          {game.banned ? (
+            <div />
+          ) : (
+            <IconButton disabled={game.banned || bansCompleted} icon={banIcon} onClick={() => banGame(index)} />
+          )}
+        </GameRow>
       ))}
     </Container>
   )
@@ -25,7 +28,7 @@ export default function SelectedGames({ bansCompleted, games, banGame }: IProps)
 
 const Container = styled.div`
   align-items: center;
-  border-right: ${({ theme }) => `solid 1px ${theme.palette.primary}`};
+  border-right: ${({ theme }) => `solid 1px ${theme.palette.border}`};
   display: flex;
   flex-direction: column;
   gap: 24px;
@@ -33,20 +36,22 @@ const Container = styled.div`
   justify-content: center;
   padding: 24px;
   width: calc(100% / 3);
+`
 
-  .game-row-container {
-    align-items: center;
-    display: flex;
-    flex-direction: row;
-    justify-content: space-between;
-    width: 100%;
+const GameRow = styled.div<{ banned: boolean }>`
+  align-items: center;
+  border: ${({ banned, theme }) => `solid 1px ${banned ? theme.palette.red : theme.palette.green}`};
+  border-radius: 20px;
+  display: flex;
+  flex-direction: row;
+  height: 74px;
+  justify-content: space-between;
+  padding: 16px 20px;
+  width: 100%;
 
-    & > p {
-      font-size: 18px;
-    }
-
-    .banned {
-      text-decoration: line-through;
-    }
+  & > p {
+    font-size: 20px;
+    font-weight: 700;
+    text-decoration: ${({ banned }) => (banned ? 'line-through' : 'none')};
   }
 `
